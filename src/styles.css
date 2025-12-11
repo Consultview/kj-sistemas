@@ -1,0 +1,55 @@
+/* ===== GLOBAL ===== */
+body {
+  margin: 0;
+  padding: 0;
+  background: #0d1117;
+  color: #fff;
+  font-family: "Arial", sans-serif;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+}
+
+a {
+  color: #00d1ff;
+  text-decoration: none;
+}
+
+/* ===== CONTENT WRAPPER ===== */
+.content-wrapper {
+  min-height: calc(100vh - 80px); /* viewport total menos footer */
+}
+
+.content {
+  padding-top: 80px; /* espaço por causa do menu fixo */
+  padding-bottom: 40px; /* espaço antes do footer */
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 25px;
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: #161b22;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid #222;
+  transition: 0.3s;
+  flex: 1 1 280px;
+  box-sizing: border-box;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #00d1ff;
+}

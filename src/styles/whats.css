@@ -1,0 +1,24 @@
+  /* ÍCONE FLUTUANTE DO WHATSAPP (sem fundo) */
+  .whatsapp-float {
+   position: fixed;
+  bottom: 75px; /* 20px acima do canto inferior */
+  left: 25px; /* canto inferior esquerdo */
+    z-index: 1000;
+    display: flex;
+   align-items: center;
+    justify-content: center;
+   cursor: pointer;
+   transition: transform 0.2s ease-in-out;
+ }
+
+ .whatsapp-float:hover {
+   transform: scale(1.1);
+ }
+
+ .whatsapp-icon {
+   width: 50px;
+   height: 50px;
+   filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+ }
+
+
