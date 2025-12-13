@@ -21,7 +21,7 @@ export default function Contact() {
         <div className="card">
           <h3>📧 E-mail Comercial</h3>
           <p className="primary-info" style={{ fontWeight: "bold" }}>
-            contato@kjsistemas.com
+            tijacksonlima@proton.me
           </p>
           <p>Suporte, propostas, projetos e atendimento geral.</p>
         </div>
@@ -30,7 +30,7 @@ export default function Contact() {
         <div className="card">
           <h3>📱 WhatsApp</h3>
           <p className="primary-info" style={{ fontWeight: "bold" }}>
-            (00) 00000-0000
+          +55  (65) 99354-6706
           </p>
           <p>Resposta rápida | Atendimento direto com especialistas.</p>
         </div>
