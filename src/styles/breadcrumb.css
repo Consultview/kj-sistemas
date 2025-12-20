@@ -1,0 +1,46 @@
+/* BREADCRUMB FIXO ABAIXO DO MENU */
+.breadcrumb {
+  position: fixed;
+  top: 70px;              /* 60px menu + 10px espaçamento */
+  left: 0;
+  width: 100%;
+
+  z-index: 2000;          /* acima do menu */
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px 20px;
+
+  background: #0f172a;
+  border-bottom: 1px solid #1e293b;
+  font-size: 14px;
+}
+
+/* LINKS */
+.breadcrumb a {
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* INÍCIO */
+.breadcrumb-home {
+  font-weight: 600;
+}
+
+/* SEPARADOR */
+.breadcrumb-separator {
+  color: #64748b;
+  margin: 0 4px;
+}
+
+/* ITEM ATUAL */
+.breadcrumb-current {
+  color: #e5e7eb;
+  font-weight: 600;
+}

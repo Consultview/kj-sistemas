@@ -1,0 +1,23 @@
+import ServiceTemplate from "../../components/ServiceTemplate";
+
+export default function Infraestrutura() {
+return (
+<ServiceTemplate
+title="Infraestrutura e Suporte"
+subtitle="Ambientes estáveis, seguros e monitorados"
+description="
+Planejamos, implantamos e mantemos infraestruturas
+robustas para garantir disponibilidade, segurança
+e desempenho dos ambientes corporativos.
+"
+items={[
+"Administração de servidores",
+"Gestão de redes e firewall",
+"Backup e recuperação de desastres",
+"Virtualização e containers",
+"Suporte técnico especializado",
+"Monitoramento de serviços",
+]}
+/>
+);
+}

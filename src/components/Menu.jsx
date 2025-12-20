@@ -24,9 +24,12 @@ export default function Menu() {
         {/* Links com React Router */}
         <nav className={`menu-links ${open ? "open" : ""}`}>
           <Link to="/" onClick={() => setOpen(false)}>Início</Link>
-          <Link to="/sobre" onClick={() => setOpen(false)}>Sobre</Link>
+          
           <Link to="/servicos" onClick={() => setOpen(false)}>Serviços</Link>
           <Link to="/contato" onClick={() => setOpen(false)}>Contato</Link>
+
+          
+          <Link to="/sobre" onClick={() => setOpen(false)}>Sobre</Link>
         </nav>
 
       </div>

@@ -1,0 +1,52 @@
+.service-page {
+max-width: 900px;
+margin: 60px auto;
+padding: 20px;
+}
+
+
+.service-page h1 {
+font-size: 36px;
+margin-bottom: 10px;
+}
+
+
+.subtitle {
+font-size: 18px;
+color: #9aa5b1;
+margin-bottom: 20px;
+}
+
+
+.description {
+font-size: 18px;
+margin-bottom: 25px;
+}
+
+.service-list {
+list-style: none;
+padding: 0;
+}
+
+
+.service-list li {
+margin-bottom: 10px;
+font-size: 16px;
+}
+
+
+.cta-button {
+display: inline-block;
+margin-top: 30px;
+padding: 14px 28px;
+background: linear-gradient(135deg, #38bdf8, #6366f1);
+color: #fff;
+border-radius: 8px;
+font-weight: bold;
+text-decoration: none;
+}
+
+
+.cta-button:hover {
+opacity: 0.9;
+}
