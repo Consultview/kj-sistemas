@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function ServiceTemplate({
   title,
   subtitle,
@@ -10,7 +12,9 @@ export default function ServiceTemplate({
 
       {subtitle && <p className="subtitle">{subtitle}</p>}
 
-      {description && <p className="description">{description}</p>}
+      {description && (
+        <p className="description">{description}</p>
+      )}
 
       {items.length > 0 && (
         <ul className="service-list">
@@ -20,9 +24,9 @@ export default function ServiceTemplate({
         </ul>
       )}
 
-      <a href="/contato" className="cta-button">
+      <Link to="/contato" className="cta-button">
         Solicitar orçamento
-      </a>
+      </Link>
     </section>
   );
 }
