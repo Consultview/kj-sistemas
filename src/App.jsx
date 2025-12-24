@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Sobre from "./pages/About";
 import Servicos from "./pages/Services";
 import Contato from "./pages/Contact";
+import Planos from "./pages/Planos";
 
 import Desenvolvimento from "./pages/services/Desenvolvimento";
 import Seguranca from "./pages/services/Seguranca";

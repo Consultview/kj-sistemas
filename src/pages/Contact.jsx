@@ -1,6 +1,14 @@
+import Planos from "./Planos";
+
+
 export default function Contact() {
   return (
+  
     <div className="container">
+
+    <Planos />
+
+    
       <h2 style={{ fontSize: "32px" }}>Entre em Contato</h2>
 
       <p style={{ fontSize: "18px", color: "#9aa5b1" }}>
