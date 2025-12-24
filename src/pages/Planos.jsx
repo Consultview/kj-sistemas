@@ -25,12 +25,12 @@ function Plano({
   color,
   precoOriginal,
   precoPromocional,
+  gratuito = false,
 }) {
   const [open, setOpen] = useState(false);
 
-  const parcela12x = calcularParcelas(precoPromocional);
   const mensagem = encodeURIComponent(
-    `Quero comprar o ${titulo} agora`
+    `Quero contratar o ${titulo} agora`
   );
 
   return (
@@ -59,29 +59,47 @@ function Plano({
 
       {/* PREÇOS */}
       <div style={{ marginTop: "12px" }}>
-        <div
-          style={{
-            textDecoration: "line-through",
-            color: "#9aa5b1",
-            fontSize: "14px",
-          }}
-        >
-          {formatar(precoOriginal)}
-        </div>
+        {gratuito ? (
+          <div
+            style={{
+              fontSize: "22px",
+              fontWeight: "bold",
+              color,
+            }}
+          >
+            GRATUITO
+          </div>
+        ) : (
+          <>
+            <div
+              style={{
+                textDecoration: "line-through",
+                color: "#9aa5b1",
+                fontSize: "14px",
+              }}
+            >
+              {formatar(precoOriginal)}
+            </div>
 
-        <div
-          style={{
-            fontSize: "26px",
-            fontWeight: "bold",
-            color,
-          }}
-        >
-          {formatar(precoPromocional)}
-        </div>
+            <div
+              style={{
+                fontSize: "26px",
+                fontWeight: "bold",
+                color,
+              }}
+            >
+              {formatar(precoPromocional)}
+            </div>
 
-        <div style={{ fontSize: "14px", color: "#9aa5b1" }}>
-          ou 12x de {formatar(Number(parcela12x))} com juros de 19%
-        </div>
+            <div style={{ fontSize: "14px", color: "#9aa5b1" }}>
+              ou 12x de{" "}
+              {formatar(
+                Number(calcularParcelas(precoPromocional))
+              )}{" "}
+              com juros de 19%
+            </div>
+          </>
+        )}
       </div>
 
       {/* DETALHES */}
@@ -104,7 +122,11 @@ function Plano({
 
       {/* BOTÃO WHATSAPP */}
       <a
-        href={`https://wa.me/5565993546706?text=${mensagem}`}
+        href={`https://wa.me/5565993546706?text=${encodeURIComponent(
+          gratuito
+            ? "Quero utilizar o Plano Free de consultoria técnica"
+            : `Quero comprar o ${titulo} agora`
+        )}`}
         target="_blank"
         rel="noopener noreferrer"
         style={{
@@ -119,7 +141,7 @@ function Plano({
           textDecoration: "none",
         }}
       >
-        💬 Quero comprar este plano agora
+        💬 {gratuito ? "Falar com um consultor" : "Quero comprar este plano agora"}
       </a>
     </div>
   );
@@ -134,8 +156,8 @@ export default function Planos() {
       <h2 style={{ fontSize: "32px" }}>Planos e Pacotes</h2>
 
       <p style={{ fontSize: "18px", color: "#9aa5b1" }}>
-        Contrato mínimo de <strong>6 meses</strong>. Valores promocionais
-        por tempo limitado.
+        Contrato mínimo de <strong>6 meses</strong> para planos pagos.
+        Atendimento remoto especializado incluso no plano Free.
       </p>
 
       <div
@@ -146,6 +168,25 @@ export default function Planos() {
           gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
         }}
       >
+        {/* PLANO FREE */}
+        <Plano
+          titulo="⚪ Plano Free"
+          subtitulo="Consultoria técnica remota gratuita"
+          color="#9ca3af"
+          gratuito
+          itens={[
+            "Consultoria técnica especializada em TI",
+            "Atendimento remoto",
+            "Auxílio técnico e orientações gerais",
+            "Horários de atendimento:",
+            "• Manhã: 08h às 11h",
+            "• Tarde: 14h às 17h",
+           
+            "Sujeito à disponibilidade",
+          ]}
+        />
+
+        {/* PLANO ESSENCIAL */}
         <Plano
           titulo="🟢 Plano Essencial"
           subtitulo="Ideal para pequenos negócios"
@@ -156,11 +197,12 @@ export default function Planos() {
             "Suporte técnico remoto",
             "Manutenção preventiva",
             "Correções básicas",
-            "Monitoramento básico",
+            "Monitoramento",
             "Relatório mensal",
           ]}
         />
 
+        {/* PLANO PROFISSIONAL */}
         <Plano
           titulo="🔵 Plano Profissional"
           subtitulo="Empresas em crescimento"
@@ -172,10 +214,11 @@ export default function Planos() {
             "Gestão de servidores",
             "Backup automatizado",
             "Consultoria mensal",
-            "Prioridade no atendimento",
+            "Atendimento especializado",
           ]}
         />
 
+        {/* PLANO AVANÇADO */}
         <Plano
           titulo="🟣 Plano Avançado"
           subtitulo="Alta performance e segurança"
@@ -183,6 +226,7 @@ export default function Planos() {
           precoOriginal={8900}
           precoPromocional={7000}
           itens={[
+          "Desenvolvimento de sistemas",
             "Monitoramento contínuo",
             "Hardening de sistemas",
             "Análise de vulnerabilidades",
@@ -191,6 +235,7 @@ export default function Planos() {
           ]}
         />
 
+        {/* PLANO ENTERPRISE */}
         <Plano
           titulo="🔴 Plano Enterprise"
           subtitulo="Ambientes críticos"
