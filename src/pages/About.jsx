@@ -4,9 +4,7 @@ export default function About() {
       <h2 style={{ fontSize: "32px" }}>Sobre a KJ Sistemas</h2>
 
       <p style={{ fontSize: "18px", color: "#9aa5b1" }}>
-        A KJ Sistemas é uma empresa especializada em soluções tecnológicas
-        completas — desenvolvimento de software, segurança cibernética,
-        infraestrutura, suporte e automações.
+        A Nossa empresa é pensada para soluções tecnológicas.
         Nosso foco é entregar performance, estabilidade e inovação para
         empresas de todos os tamanhos.
       </p>
@@ -22,7 +20,7 @@ export default function About() {
         <div className="card">
           <h3>🏢 Nossa História</h3>
           <p>
-            Criada para atender empresas com alta demanda tecnológica,
+            Pensado e criada para atender a transformação e evolução da tecnologia da informação, comunicação e automação.
             evoluímos oferecendo soluções robustas, seguras e modernas.
           </p>
         </div>
@@ -30,16 +28,14 @@ export default function About() {
         <div className="card">
           <h3>🎯 Nossa Missão</h3>
           <p>
-            Levar inovação, segurança e eficiência através de sistemas
-            inteligentes e infraestrutura de alto desempenho.
+            Levar inovação, segurança e eficiência a toda a infraestrutura tecnológica através de serviços e sistemas inteligentes de alto desempenho.
           </p>
         </div>
 
         <div className="card">
           <h3>⚙️ Nosso Diferencial</h3>
           <p>
-            Entregamos soluções completas: software, hardware, cloud,
-            manutenção, consultoria e segurança — tudo em um só lugar.
+            Entregamos soluções completas: software, hardware, cloud, atuando em toda a cadeia tecnológica garantindo a continuidade dos processos - tudo em um só lugar.
           </p>
         </div>
 
@@ -47,7 +43,8 @@ export default function About() {
           <h3>🛡 Segurança como prioridade</h3>
           <p>
             Aplicamos padrões profissionais, hardening, auditorias e
-            práticas avançadas para proteger sua empresa contra ataques.
+            práticas avançadas para garantir a segurança cibernética.
+            
           </p>
         </div>
 
