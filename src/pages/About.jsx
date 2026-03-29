@@ -1,12 +1,88 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+/* =========================
+   COMPONENTE CARD ABOUT (PADRÃO SISTEMA)
+========================= */
+function CardAbout({ titulo, descricao, detalhes, color, destaque }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      className="card"
+      style={{
+        borderLeft: `5px solid ${color}`,
+        transition: "all 0.3s ease",
+        boxShadow: open ? "0 0 0 2px rgba(0,0,0,0.06)" : "none",
+        position: "relative",
+      }}
+    >
+      {destaque && (
+        <span
+          style={{
+            position: "absolute",
+            top: "10px",
+            right: "10px",
+            background: color,
+            color: "#fff",
+            padding: "4px 8px",
+            borderRadius: "6px",
+            fontSize: "12px",
+          }}
+        >
+          INSTITUCIONAL
+        </span>
+      )}
+
+      <h3
+        onClick={() => setOpen(!open)}
+        style={{
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
+        }}
+      >
+        <span style={{ color }}>{open ? "▼" : "▶"}</span>
+        {titulo}
+      </h3>
+
+      {/* DESCRIÇÃO (SEMPRE VISÍVEL) */}
+      <p style={{ color: "#9aa5b1" }}>{descricao}</p>
+
+      {/* DETALHES (EXPANSÍVEL IGUAL OUTROS) */}
+      {open && (
+        <ul
+          style={{
+            marginTop: "16px",
+            paddingLeft: "20px",
+            paddingTop: "12px",
+            borderTop: `1px solid ${color}33`,
+          }}
+        >
+          {detalhes.map((item, index) => (
+            <li key={index} style={{ marginBottom: "10px" }}>
+              {item}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+/* =========================
+   PÁGINA ABOUT
+========================= */
 export default function About() {
   return (
     <div className="container">
-      <h2 style={{ fontSize: "32px" }}>Sobre a KJ Sistemas</h2>
+      <h2 style={{ fontSize: "32px" }}>Sobre nós</h2>
 
       <p style={{ fontSize: "18px", color: "#9aa5b1" }}>
-        A Nossa empresa é pensada para soluções tecnológicas.
-        Nosso foco é entregar performance, estabilidade e inovação para
-        empresas de todos os tamanhos.
+        A DETOX IT SOLUTIONS é uma empresa voltada para soluções tecnológicas completas,
+        com foco em performance, estabilidade e inovação. Atuamos no desenvolvimento
+        de sistemas, infraestrutura, segurança cibernética e automação, atendendo
+        empresas que buscam evolução tecnológica com confiança e eficiência.
       </p>
 
       <div
@@ -17,68 +93,109 @@ export default function About() {
           gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
         }}
       >
-        <div className="card">
-          <h3>🏢 Nossa História</h3>
-          <p>
-            Pensado e criada para atender a transformação e evolução da tecnologia da informação, comunicação e automação.
-            evoluímos oferecendo soluções robustas, seguras e modernas.
-          </p>
-        </div>
+        <CardAbout
+          titulo="🏢 Nossa História"
+          color="#2563eb"
+          destaque
+          descricao="A DETOX IT SOLUTIONS foi criada com o objetivo de acompanhar a evolução da tecnologia e oferecer soluções modernas e seguras."
+          detalhes={[
+            "Evolução constante em tecnologia",
+            "Foco em inovação e segurança",
+            "Atuação em múltiplos segmentos",
+          ]}
+        />
 
-        <div className="card">
-          <h3>🎯 Nossa Missão</h3>
-          <p>
-            Levar inovação, segurança e eficiência a toda a infraestrutura tecnológica através de serviços e sistemas inteligentes de alto desempenho.
-          </p>
-        </div>
+        <CardAbout
+          titulo="🎯 Nossa Missão"
+          color="#22c55e"
+          descricao="Levar inovação, segurança e eficiência para ambientes tecnológicos corporativos."
+          detalhes={[
+            "Aumento de produtividade",
+            "Redução de riscos operacionais",
+            "Alta performance em sistemas",
+          ]}
+        />
 
-        <div className="card">
-          <h3>⚙️ Nosso Diferencial</h3>
-          <p>
-            Entregamos soluções completas: software, hardware, cloud, atuando em toda a cadeia tecnológica garantindo a continuidade dos processos - tudo em um só lugar.
-          </p>
-        </div>
+        <CardAbout
+          titulo="⚙️ Nosso Diferencial"
+          color="#8b5cf6"
+          destaque
+          descricao="Soluções completas integrando software, hardware, infraestrutura e cloud."
+          detalhes={[
+            "Atuação ponta a ponta",
+            "Um único parceiro tecnológico",
+            "Controle total do ambiente",
+          ]}
+        />
 
-        <div className="card">
-          <h3>🛡 Segurança como prioridade</h3>
-          <p>
-            Aplicamos padrões profissionais, hardening, auditorias e
-            práticas avançadas para garantir a segurança cibernética.
-            
-          </p>
-        </div>
+        <CardAbout
+          titulo="🛡 Segurança como prioridade"
+          color="#ef4444"
+          descricao="Proteção avançada contra ameaças digitais e vulnerabilidades."
+          detalhes={[
+            "Hardening de sistemas",
+            "Análise de vulnerabilidades",
+            "Monitoramento contínuo",
+          ]}
+        />
 
-        <div className="card">
-          <h3>📈 Tecnologia moderna</h3>
-          <p>
-            Utilizamos ferramentas atuais, desenvolvimento otimizado e
-            arquiteturas escaláveis para garantir performance real.
-          </p>
-        </div>
+        <CardAbout
+          titulo="📈 Tecnologia moderna"
+          color="#f59e0b"
+          descricao="Uso de arquiteturas escaláveis e tecnologias atuais."
+          detalhes={[
+            "Alta performance",
+            "Escalabilidade",
+            "Sustentabilidade tecnológica",
+          ]}
+        />
 
-        <div className="card">
-          <h3>🤝 Compromisso com o cliente</h3>
-          <p>
-            Atendimento direto, rápido e profissional. Estamos presentes
-            em todas as etapas: planejamento, execução e suporte contínuo.
-          </p>
-        </div>
+        <CardAbout
+          titulo="🤝 Compromisso com o cliente"
+          color="#10b981"
+          descricao="Atendimento direto e acompanhamento completo do projeto."
+          detalhes={[
+            "Planejamento estratégico",
+            "Execução técnica",
+            "Suporte contínuo",
+          ]}
+        />
 
-        <div className="card">
-          <h3>🌐 Infraestrutura e Cloud</h3>
-          <p>
-            Servidores, redes, otimizações, monitoramento e
-            soluções em nuvem para garantir alta disponibilidade.
-          </p>
-        </div>
+        <CardAbout
+          titulo="🌐 Infraestrutura e Cloud"
+          color="#6366f1"
+          descricao="Gestão de ambientes corporativos e nuvem."
+          detalhes={[
+            "Servidores e redes",
+            "Cloud computing",
+            "Alta disponibilidade",
+          ]}
+        />
 
-        <div className="card">
-          <h3>📊 Foco em resultados</h3>
-          <p>
-            Cada serviço é projetado para melhorar desempenho, reduzir custos
-            operacionais e aumentar a produtividade da sua empresa.
-          </p>
-        </div>
+        <CardAbout
+          titulo="📊 Foco em resultados"
+          color="#ec4899"
+          destaque
+          descricao="Projetos voltados para eficiência e redução de custos."
+          detalhes={[
+            "Otimização de processos",
+            "Redução de custos",
+            "Aumento de produtividade",
+          ]}
+        />
+
+
+        
+        
+           <div className="buttons">
+                  <Link to="/contato">
+                    <button className="btn-primary">
+                      &gt;&gt; Fale Conosco!
+                    </button>
+                  </Link>
+                </div>
+
+        
       </div>
     </div>
   );

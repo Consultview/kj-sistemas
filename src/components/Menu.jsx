@@ -9,7 +9,17 @@ export default function Menu() {
     <header className="top-menu">
       <div className="menu-container">
 
-        <h1 className="menu-logo">KJ SISTEMAS</h1>
+
+           
+       
+               <Link to="/" style={{ textDecoration: "none" }}>
+                   <h1 className="menu-logo">
+                     <strong> 🌿 DETOX IT </strong>
+                     <strong style={{ color: "white" }}>SOLUTIONS </strong>
+                   </h1>
+                 </Link>
+                   
+       
 
         {/* Botão hamburguer */}
         <div
@@ -23,13 +33,17 @@ export default function Menu() {
 
         {/* Links com React Router */}
         <nav className={`menu-links ${open ? "open" : ""}`}>
-          <Link to="/" onClick={() => setOpen(false)}>Início</Link>
+          <Link to="/" onClick={() => setOpen(false)}>INICIO</Link>
+
+                   <Link to="/produtos" onClick={() =>
+   setOpen(false)}>PRODUTOS</Link>
           
-          <Link to="/servicos" onClick={() => setOpen(false)}>Serviços</Link>
-          <Link to="/contato" onClick={() => setOpen(false)}>Contato</Link>
+          <Link to="/servicos" onClick={() => setOpen(false)}>SERVIÇOS</Link>
+          
+          <Link to="/contato" onClick={() => setOpen(false)}>CONTATO</Link>
 
           
-          <Link to="/sobre" onClick={() => setOpen(false)}>Sobre</Link>
+          <Link to="/sobre" onClick={() => setOpen(false)}>SOBRE</Link>
         </nav>
 
       </div>

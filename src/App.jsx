@@ -1,11 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+
+import ScrollToTop from "./components/ScrollToTop";
 import Menu from "./components/Menu";
 import Footer from "./components/Footer";
 import Breadcrumb from "./components/Breadcrumb";
 
 import Home from "./pages/Home";
 import Sobre from "./pages/About";
+import Produtos from "./pages/Produtos";
 import Servicos from "./pages/Services";
 import Contato from "./pages/Contact";
 import Planos from "./pages/Planos";
@@ -29,6 +32,9 @@ import "./styles/breadcrumb.css";
 export default function App() {
   return (
     <Router>
+
+    <ScrollToTop />
+    
       {/* MENU FIXO */}
       <Menu />
 
@@ -40,6 +46,7 @@ export default function App() {
         <main className="content">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/produtos" element={<Produtos />} />
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/servicos" element={<Servicos />} />
             <Route path="/contato" element={<Contato />} />

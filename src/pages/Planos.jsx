@@ -1,21 +1,6 @@
 import { useState } from "react";
 
 /* =========================
-   UTILITÁRIOS
-========================= */
-function calcularParcelas(valor, parcelas = 12, juros = 0.19) {
-  const total = valor * (1 + juros);
-  return (total / parcelas).toFixed(2);
-}
-
-function formatar(valor) {
-  return valor.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  });
-}
-
-/* =========================
    COMPONENTE PLANO
 ========================= */
 function Plano({
@@ -23,15 +8,11 @@ function Plano({
   subtitulo,
   itens,
   color,
-  precoOriginal,
-  precoPromocional,
   gratuito = false,
+  descricaoCurta,
+  descricaoLonga,
 }) {
   const [open, setOpen] = useState(false);
-
-  const mensagem = encodeURIComponent(
-    `Quero contratar o ${titulo} agora`
-  );
 
   return (
     <div
@@ -57,46 +38,32 @@ function Plano({
 
       <p style={{ color: "#9aa5b1" }}>{subtitulo}</p>
 
-      {/* PREÇOS */}
+      {/* BLOCO PROFISSIONAL (SEM PREÇO) */}
       <div style={{ marginTop: "12px" }}>
         {gratuito ? (
           <div
             style={{
-              fontSize: "22px",
+              fontSize: "18px",
               fontWeight: "bold",
               color,
             }}
           >
-            GRATUITO
+            Diagnóstico técnico inicial
           </div>
         ) : (
           <>
             <div
               style={{
-                textDecoration: "line-through",
-                color: "#9aa5b1",
-                fontSize: "14px",
-              }}
-            >
-              {formatar(precoOriginal)}
-            </div>
-
-            <div
-              style={{
-                fontSize: "26px",
+                fontSize: "18px",
                 fontWeight: "bold",
                 color,
               }}
             >
-              {formatar(precoPromocional)}
+              {descricaoCurta}
             </div>
 
             <div style={{ fontSize: "14px", color: "#9aa5b1" }}>
-              ou 12x de{" "}
-              {formatar(
-                Number(calcularParcelas(precoPromocional))
-              )}{" "}
-              com juros de 19%
+              {descricaoLonga}
             </div>
           </>
         )}
@@ -120,29 +87,7 @@ function Plano({
         </ul>
       )}
 
-      {/* BOTÃO WHATSAPP */}
-      <a
-        href={`https://wa.me/5565993546706?text=${encodeURIComponent(
-          gratuito
-            ? "Quero utilizar o Plano Free de consultoria técnica"
-            : `Quero comprar o ${titulo} agora`
-        )}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          display: "block",
-          marginTop: "20px",
-          textAlign: "center",
-          padding: "12px",
-          borderRadius: "8px",
-          backgroundColor: "#25D366",
-          color: "#fff",
-          fontWeight: "bold",
-          textDecoration: "none",
-        }}
-      >
-        💬 {gratuito ? "Falar com um consultor" : "Quero comprar este plano agora"}
-      </a>
+   
     </div>
   );
 }
@@ -156,8 +101,7 @@ export default function Planos() {
       <h2 style={{ fontSize: "32px" }}>Planos e Pacotes</h2>
 
       <p style={{ fontSize: "18px", color: "#9aa5b1" }}>
-        Contrato mínimo de <strong>6 meses</strong> para planos pagos.
-        Atendimento remoto especializado incluso no plano Free.
+        Soluções profissionais em TI com foco em desempenho, segurança e continuidade operacional.
       </p>
 
       <div
@@ -171,17 +115,17 @@ export default function Planos() {
         {/* PLANO FREE */}
         <Plano
           titulo="⚪ Plano Free"
-          subtitulo="Consultoria técnica remota gratuita"
+          subtitulo="Consultoria técnica inicial e orientação especializada"
           color="#9ca3af"
           gratuito
+          descricaoCurta="Diagnóstico técnico inicial"
+          descricaoLonga="Ideal para avaliar seu ambiente, identificar falhas e receber direcionamento profissional antes de qualquer investimento"
           itens={[
-            "Consultoria técnica especializada em TI",
+            "Diagnóstico inicial do ambiente",
+            "Consultoria técnica especializada",
             "Atendimento remoto",
-            "Auxílio técnico e orientações gerais",
-            "Horários de atendimento:",
-            "• Manhã: 08h às 11h",
-            "• Tarde: 14h às 17h",
-           
+            "Orientações para melhoria de infraestrutura",
+            "Horários: 08h às 11h | 14h às 17h",
             "Sujeito à disponibilidade",
           ]}
         />
@@ -189,65 +133,64 @@ export default function Planos() {
         {/* PLANO ESSENCIAL */}
         <Plano
           titulo="🟢 Plano Essencial"
-          subtitulo="Ideal para pequenos negócios"
+          subtitulo="Suporte contínuo para pequenas operações"
           color="#22c55e"
-          precoOriginal={850}
-          precoPromocional={690}
+          descricaoCurta="Suporte técnico e manutenção contínua"
+          descricaoLonga="Perfeito para pequenas operações que precisam manter sistemas funcionando com estabilidade, evitando falhas e interrupções"
           itens={[
-            "Suporte técnico remoto",
+            "Suporte técnico remoto contínuo",
             "Manutenção preventiva",
-            "Correções básicas",
-            "Monitoramento",
-            "Relatório mensal",
+            "Correções operacionais",
+            "Monitoramento básico",
+            "Relatório mensal de atividades",
           ]}
         />
 
         {/* PLANO PROFISSIONAL */}
         <Plano
           titulo="🔵 Plano Profissional"
-          subtitulo="Empresas em crescimento"
+          subtitulo="Estruturação e gestão de ambientes em crescimento"
           color="#3b82f6"
-          precoOriginal={4500}
-          precoPromocional={2100}
+          descricaoCurta="Gestão estruturada de TI"
+          descricaoLonga="Indicado para empresas em crescimento que precisam organizar servidores, processos e garantir continuidade operacional com suporte estratégico"
           itens={[
             "Suporte remoto e presencial",
-            "Gestão de servidores",
-            "Backup automatizado",
-            "Consultoria mensal",
-            "Atendimento especializado",
+            "Gestão de servidores e serviços",
+            "Rotinas de backup automatizado",
+            "Consultoria técnica recorrente",
+            "Atendimento prioritário",
           ]}
         />
 
         {/* PLANO AVANÇADO */}
         <Plano
           titulo="🟣 Plano Avançado"
-          subtitulo="Alta performance e segurança"
+          subtitulo="Foco em segurança, estabilidade e performance"
           color="#8b5cf6"
-          precoOriginal={8900}
-          precoPromocional={7000}
+          descricaoCurta="Segurança e performance avançada"
+          descricaoLonga="Voltado para ambientes que exigem proteção contra vulnerabilidades, monitoramento contínuo e otimização de desempenho"
           itens={[
-          "Desenvolvimento de sistemas",
-            "Monitoramento contínuo",
+            "Monitoramento contínuo do ambiente",
             "Hardening de sistemas",
             "Análise de vulnerabilidades",
-            "Gestão de patches",
-            "Relatórios avançados",
+            "Gestão de atualizações e patches",
+            "Relatórios técnicos avançados",
           ]}
         />
 
         {/* PLANO ENTERPRISE */}
         <Plano
           titulo="🔴 Plano Enterprise"
-          subtitulo="Ambientes críticos"
+          subtitulo="Gestão completa para ambientes críticos"
           color="#ef4444"
-          precoOriginal={19000}
-          precoPromocional={17500}
+          descricaoCurta="Operação crítica e alta disponibilidade"
+          descricaoLonga="Para empresas que não podem parar, com suporte 24/7, resposta imediata a incidentes e gestão completa da infraestrutura"
           itens={[
             "Suporte dedicado 24/7",
-            "Pentest periódico",
-            "Cloud & DevOps",
-            "Plano de contingência",
-            "Relatórios executivos",
+            "Testes de segurança (Pentest)",
+            "Infraestrutura Cloud e DevOps",
+            "Plano de contingência e recuperação",
+            "Relatórios executivos e estratégicos",
           ]}
         />
       </div>

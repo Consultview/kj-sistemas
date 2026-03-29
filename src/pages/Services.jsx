@@ -1,14 +1,89 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
+/* =========================
+   COMPONENTE CARD SERVIÇO
+========================= */
+function CardServico({ titulo, link, descricao, detalhes, color, destaque }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      className="card"
+      style={{
+       
+        borderLeft: `5px solid ${color}`,
+        transition: "all 0.3s ease",
+        boxShadow: open ? "0 0 0 2px rgba(0,0,0,0.06)" : "none",
+        position: "relative",
+      }}
+    >
+      {destaque && (
+        <span
+          style={{
+            position: "absolute",
+            top: "10px",
+            right: "10px",
+            background: color,
+            color: "#fff",
+            padding: "4px 8px",
+            borderRadius: "6px",
+            fontSize: "12px",
+          }}
+        >
+          PRINCIPAL
+        </span>
+      )}
+
+      <h3
+        onClick={() => setOpen(!open)}
+        style={{ cursor: "pointer", display: "flex", gap: "8px" }}
+      >
+        <span style={{ color }}>{open ? "▼" : "▶"}</span>
+        <Link to={link} style={{ textDecoration: "none", color: "inherit" }}>
+          {titulo}
+        </Link>
+      </h3>
+
+      <p style={{ color: "#9aa5b1" }}>{descricao}</p>
+
+      {/* POSICIONAMENTO */}
+      <div style={{ marginTop: "12px" }}>
+        <div style={{ fontWeight: "bold", color }}>{detalhes.titulo}</div>
+        <div style={{ fontSize: "14px", color: "#9aa5b1" }}>
+          {detalhes.descricao}
+        </div>
+      </div>
+
+      {/* DETALHES */}
+      {open && (
+        <ul
+          style={{
+            marginTop: "16px",
+            paddingLeft: "20px",
+            borderTop: `1px solid ${color}33`,
+            paddingTop: "12px",
+          }}
+        >
+          {detalhes.lista.map((item, i) => (
+            <li key={i} style={{ marginBottom: "8px" }}>{item}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+/* =========================
+   PÁGINA SERVICES
+========================= */
 export default function Services() {
   return (
     <div className="container">
       <h2 style={{ fontSize: "32px" }}>Nossos Serviços</h2>
 
       <p style={{ fontSize: "18px", color: "#9aa5b1" }}>
-        A KJ Sistemas oferece soluções completas para empresas:
-        desenvolvimento, segurança cibernética, infraestrutura, automação,
-        marketing digital, suporte técnico e consultoria estratégica.
+        Soluções completas para empresas que buscam performance, segurança e escalabilidade em seus ambientes tecnológicos.
       </p>
 
       <div
@@ -16,139 +91,177 @@ export default function Services() {
           marginTop: "40px",
           display: "grid",
           gap: "20px",
-          gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
         }}
       >
-        {/* CARD 1 */}
-        <div className="card">
-          <h3>
-            <Link to="/servicos/desenvolvimento">
-              💻 Desenvolvimento de Software
-            </Link>
-          </h3>
-          <p>
-            Sistemas web, apps Android, APIs, automações e soluções
-            personalizadas para empresas.
-          </p>
-        </div>
 
-        {/* CARD 2 */}
-        <div className="card">
-          <h3>
-            <Link to="/servicos/seguranca">
-              🛡 Segurança da Informação
-            </Link>
-          </h3>
-          <p>
-            Pentest, análises de vulnerabilidade, hardening,
-            auditorias e proteção contra ataques.
-          </p>
-        </div>
 
-        {/* CARD 3 */}
-        <div className="card">
-          <h3>
-            <Link to="/servicos/infraestrutura">
-              🛠 Suporte Técnico & Infraestrutura
-            </Link>
-          </h3>
-          <p>
-            Redes, servidores, backup, monitoramento, manutenção
-            e otimização de ambientes corporativos.
-          </p>
-        </div>
+              <CardServico
+          titulo="💻 Desenvolvimento de Software"
+          link="/servicos/desenvolvimento"
+          color="#2563eb"
+          destaque
+          descricao="Criação de sistemas sob medida para empresas"
+          detalhes={{
+            titulo: "Soluções personalizadas",
+            descricao: "Projetos desenvolvidos conforme a necessidade do negócio, focando automação e eficiência",
+            lista: [
+              "Sistemas web e plataformas",
+              "Aplicativos Android",
+              "APIs e integrações",
+              "Automação de processos",
+            ],
+          }}
+        />
 
-        {/* CARD 4 */}
-        <div className="card">
-          <h3>
-            <Link to="/servicos/hardware">
-              ⚙️ Serviços de Hardware
-            </Link>
-          </h3>
-          <p>
-            Manutenção, upgrades, diagnóstico profissional,
-            montagem e reparo de computadores.
-          </p>
-        </div>
+        <CardServico
+          titulo="🛡 Segurança da Informação"
+          link="/servicos/seguranca"
+          color="#ef4444"
+          destaque
+          descricao="Proteção contra ataques e vulnerabilidades"
+          detalhes={{
+            titulo: "Defesa cibernética",
+            descricao: "Estratégias para proteger dados, sistemas e operações contra ameaças digitais",
+            lista: [
+              "Pentest",
+              "Análise de vulnerabilidades",
+              "Hardening",
+              "Monitoramento de segurança",
+            ],
+          }}
+        />
 
-        {/* CARD 5 */}
-        <div className="card">
-          <h3>
-            <Link to="/servicos/automacao-ia">
-              🤖 Automação & Inteligência Artificial
-            </Link>
-          </h3>
-          <p>
-            Chatbots, scripts avançados, automação de processos
-            e assistentes inteligentes.
-          </p>
-        </div>
+        <CardServico
+          titulo="🛠 Infraestrutura & Suporte"
+          link="/servicos/infraestrutura"
+          color="#6366f1"
+          descricao="Ambientes corporativos estáveis e seguros"
+          detalhes={{
+            titulo: "Base tecnológica sólida",
+            descricao: "Implantação e manutenção de ambientes com alta disponibilidade",
+            lista: [
+              "Servidores",
+              "Redes corporativas",
+              "Backup",
+              "Monitoramento",
+            ],
+          }}
+        />
 
-        {/* CARD 6 */}
-        <div className="card">
-          <h3>
-            <Link to="/servicos/consultoria">
-              📊 Consultoria Tecnológica
-            </Link>
-          </h3>
-          <p>
-            Planejamento estratégico, modernização de sistemas
-            e suporte técnico especializado.
-          </p>
-        </div>
+        <CardServico
+          titulo="⚙️ Hardware"
+          link="/servicos/hardware"
+          color="#10b981"
+          descricao="Manutenção e otimização de equipamentos"
+          detalhes={{
+            titulo: "Performance e durabilidade",
+            descricao: "Ajustes técnicos para melhorar desempenho e vida útil",
+            lista: [
+              "Upgrade de hardware",
+              "Diagnóstico",
+              "Reparo técnico",
+              "Montagem personalizada",
+            ],
+          }}
+        />
 
-        {/* CARD 7 — NOVO */}
-        <div className="card">
-          <h3>
-            <Link to="/servicos/redes-sociais">
-              📱 Gestão de Redes Sociais
-            </Link>
-          </h3>
-          <p>
-            Criação de conteúdo, planejamento estratégico,
-            gestão de perfis e crescimento digital.
-          </p>
-        </div>
+        <CardServico
+          titulo="🤖 Automação & IA"
+          link="/servicos/automacao-ia"
+          color="#8b5cf6"
+          descricao="Automação inteligente de processos"
+          detalhes={{
+            titulo: "Eficiência operacional",
+            descricao: "Redução de tarefas manuais com uso de inteligência artificial",
+            lista: [
+              "Chatbots",
+              "Scripts automáticos",
+              "Integração de sistemas",
+              "IA aplicada",
+            ],
+          }}
+        />
 
-        {/* CARD 8 — NOVO */}
-        <div className="card">
-          <h3>
-            <Link to="/servicos/marketing-digital">
-              📢 Marketing Digital
-            </Link>
-          </h3>
-          <p>
-            Tráfego pago, SEO, campanhas online,
-            branding e posicionamento digital.
-          </p>
-        </div>
+        <CardServico
+          titulo="📊 Consultoria Tecnológica"
+          link="/servicos/consultoria"
+          color="#f59e0b"
+          descricao="Planejamento e estratégia de TI"
+          detalhes={{
+            titulo: "Visão estratégica",
+            descricao: "Análise do ambiente e definição de melhorias tecnológicas",
+            lista: [
+              "Diagnóstico técnico",
+              "Planejamento",
+              "Modernização",
+              "Acompanhamento",
+            ],
+          }}
+        />
 
-        {/* CARD 9 — NOVO */}
-        <div className="card">
-          <h3>
-            <Link to="/servicos/cloud">
-              ☁️ Cloud & DevOps
-            </Link>
-          </h3>
-          <p>
-            Deploy em nuvem, Azure/AWS, CI/CD,
-            automação de infraestrutura e escalabilidade.
-          </p>
-        </div>
+        <CardServico
+          titulo="📢 Marketing Digital"
+          link="/servicos/marketing-digital"
+          color="#ec4899"
+          descricao="Posicionamento e crescimento online"
+          detalhes={{
+            titulo: "Presença digital",
+            descricao: "Estratégias para atrair clientes e aumentar visibilidade",
+            lista: [
+              "Tráfego pago",
+              "SEO",
+              "Campanhas",
+              "Branding",
+            ],
+          }}
+        />
 
-        {/* CARD 10 — NOVO */}
-        <div className="card">
-          <h3>
-            <Link to="/servicos/monitoramento">
-              📈 Monitoramento & Observabilidade
-            </Link>
-          </h3>
-          <p>
-            Monitoramento de sistemas, logs,
-            performance, uptime e segurança contínua.
-          </p>
-        </div>
-      </div>
+        <CardServico
+          titulo="☁️ Cloud & DevOps"
+          link="/servicos/cloud"
+          color="#06b6d4"
+          descricao="Infraestrutura em nuvem escalável"
+          detalhes={{
+            titulo: "Alta disponibilidade",
+            descricao: "Ambientes em nuvem com automação e escalabilidade",
+            lista: [
+              "Deploy cloud",
+              "CI/CD",
+              "Infraestrutura automatizada",
+              "Escalabilidade",
+            ],
+          }}
+        />
+
+        <CardServico
+          titulo="📈 Monitoramento"
+          link="/servicos/monitoramento"
+          color="#84cc16"
+          descricao="Controle e análise contínua"
+          detalhes={{
+            titulo: "Visibilidade total",
+            descricao: "Monitoramento de sistemas para evitar falhas e otimizar performance",
+            lista: [
+              "Logs",
+              "Uptime",
+              "Performance",
+              "Alertas",
+            ],
+          }}
+        />
+       
+      
+
+
+          <div className="buttons">
+         <Link to="/produtos">
+          
+             &gt;&gt; Mais
+           
+         </Link>
+         </div>
+       </div>
     </div>
   );
 }

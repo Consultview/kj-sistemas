@@ -1,1 +1,1 @@
-import ServiceTemplate from "../../components/ServiceTemplate";
+import ServiceTemplate from "./ServiceTemplate";
