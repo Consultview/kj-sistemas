@@ -167,7 +167,7 @@ export default function Home() {
 
 
        <div className="buttons">
-         <Link to="/servicos">
+         <Link to="/servicos/">
           
              &gt;&gt; Mais
           
