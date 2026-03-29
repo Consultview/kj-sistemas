@@ -14,8 +14,8 @@ export default function Menu() {
        
                <Link to="/" style={{ textDecoration: "none" }}>
                    <h1 className="menu-logo">
-                     <strong> 🌿 DETOX IT </strong>
-                     <strong style={{ color: "white" }}>SOLUTIONS </strong>
+                     <strong> 🌿 DETOX </strong>
+                     <strong style={{ color: "white" }}>IT SOLUTIONS </strong>
                    </h1>
                  </Link>
                    
