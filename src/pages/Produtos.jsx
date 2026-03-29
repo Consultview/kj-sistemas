@@ -280,7 +280,7 @@ export default function Marcas() {
    <div className="buttons">
           <Link to="/contato">
             
-              &gt;&gt; Saiba Mais
+              &gt;&gt; Saiba Mais &lt;&lt;
            
           </Link>
         </div>

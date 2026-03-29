@@ -67,12 +67,11 @@ export default function Home() {
   return (
     <div className="container">
       <h2 className="title">
-        Inovação, Segurança e Tecnologia
+        Inovação, Governança e Tecnologia
       </h2>
 
       <p className="subtitle">
-        Soluções completas em tecnologia da informação, infraestrutura e
-        automação para empresas que exigem desempenho, segurança e confiabilidade operacional.
+        Soluções  em tecnologia da informação para pequenas e médias empresas que exigem desempenho, segurança e confiabilidade operacional.
       </p>
 
       <div className="grid">
@@ -169,7 +168,7 @@ export default function Home() {
        <div className="buttons">
          <Link to="/servicos/">
           
-             &gt;&gt; Mais
+             &gt;&gt; Mais &lt;&lt;
           
          </Link>
        </div>

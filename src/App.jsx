@@ -5,6 +5,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Menu from "./components/Menu";
 import Footer from "./components/Footer";
 import Breadcrumb from "./components/Breadcrumb";
+import Cookies from "./components/Cookies";
 
 import Home from "./pages/Home";
 import Sobre from "./pages/About";
@@ -12,6 +13,7 @@ import Produtos from "./pages/Produtos";
 import Servicos from "./pages/Services";
 import Contato from "./pages/Contact";
 import Planos from "./pages/Planos";
+
 
 import Desenvolvimento from "./pages/services/Desenvolvimento";
 import Seguranca from "./pages/services/Seguranca";
@@ -34,6 +36,7 @@ export default function App() {
     <Router>
 
     <ScrollToTop />
+    <Cookies />
     
       {/* MENU FIXO */}
       <Menu />
