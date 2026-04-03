@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/home.css";
 
 /* =========================
@@ -13,25 +13,39 @@ function Servico({
   destaque,
   destaqueTitulo,
   destaqueDescricao,
+  link,
 }) {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="card" style={{ borderTop: `3px solid ${color}` }}>
       {destaque && <span className="badge">RECOMENDADO</span>}
 
-      <h3 className="card-title" onClick={() => setOpen(!open)}>
-        <span style={{ color }}>{open ? "▼" : "▶"}</span>
+      <h3 className="card-title" onClick={() => setOpen(!open)} style={{ cursor: 'pointer' }}>
+        <span style={{ color, marginRight: '8px' }}>{open ? "▼" : "▶"}</span>
         {titulo}
       </h3>
 
       <p className="card-desc">{descricao}</p>
 
-      <div className="card-highlight">
+      {/* Área de destaque com clique para a página do serviço */}
+      <div
+        className="card-highlight"
+        onClick={() => link && navigate(link)}
+        style={{ cursor: link ? "pointer" : "default" }}
+      >
         <div className="highlight-title" style={{ color }}>
-          {destaqueTitulo}
+          {destaqueTitulo} {link && "→"}
         </div>
-        <div className="highlight-desc">{destaqueDescricao}</div>
+        <div className="highlight-desc">
+          {destaqueDescricao}
+          {link && (
+            <span style={{ display: 'block', marginTop: '5px', fontSize: '12px', fontWeight: 'bold' }}>
+              Clique para saber mais
+            </span>
+          )}
+        </div>
       </div>
 
       {open && (
@@ -45,7 +59,7 @@ function Servico({
         </ul>
       )}
 
-      {/* BOTÃO WHATSAPP (SÓ NO GRATUITO) */}
+      {/* BOTÃO WHATSAPP (SÓ NO GRATUITO/DESTAQUE) */}
       {destaque && (
         <a
           href="https://wa.me/5565993546706?text=Ol%C3%A1,%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20gratuita"
@@ -71,7 +85,7 @@ export default function Home() {
       </h2>
 
       <p className="subtitle">
-        Soluções  em tecnologia da informação para pequenas e médias empresas que exigem desempenho, segurança e confiabilidade operacional.
+        Soluções em tecnologia da informação para pequenas e médias empresas que exigem desempenho, segurança e confiabilidade operacional.
       </p>
 
       <div className="grid">
@@ -93,6 +107,7 @@ export default function Home() {
         <Servico
           titulo="💻 Desenvolvimento de Sistemas"
           descricao="Criação de sistemas sob medida para operação e gestão"
+          link="/servicos/desenvolvimento"
           color="#2563eb"
           destaqueTitulo="Sistemas adaptados ao seu negócio"
           destaqueDescricao="Desenvolvimento focado em performance, automação e integração com seus processos internos"
@@ -159,21 +174,13 @@ export default function Home() {
             "Soluções com inteligência artificial",
           ]}
         />
-      
+      </div>
 
-   
-    
-
-
-       <div className="buttons">
-         <Link to="/servicos/">
-          
-             &gt;&gt; Mais &lt;&lt;
-          
-         </Link>
-       </div>
-
-     </div>
+      <div className="buttons" style={{ marginTop: '40px', textAlign: 'center' }}>
+        <Link to="/servicos/" className="link-mais">
+          &gt;&gt; Ver todos os serviços &lt;&lt;
+        </Link>
+      </div>
     </div>
   );
 }

@@ -96,23 +96,24 @@ export default function Services() {
       >
 
 
-              <CardServico
-          titulo="💻 Desenvolvimento de Software"
-          link="/servicos/desenvolvimento"
+        <CardServico
+          titulo="🚀 Implantação de Sistemas"
+          link="/servicos/implantacao"
           color="#2563eb"
           destaque
-          descricao="Criação de sistemas sob medida para empresas"
+          descricao="Configuração e integração de softwares no seu negócio"
           detalhes={{
-            titulo: "Soluções personalizadas",
-            descricao: "Projetos desenvolvidos conforme a necessidade do negócio, focando automação e eficiência",
+            titulo: "Eficiência na transição",
+            descricao: "Implementamos soluções de software garantindo a correta configuração, migração de dados e treinamento da equipe.",
             lista: [
-              "Sistemas web e plataformas",
-              "Aplicativos Android",
-              "APIs e integrações",
-              "Automação de processos",
+              "Configuração de ERPs e CRMs",
+              "Migração de banco de dados",
+              "Integração entre plataformas",
+              "Treinamento e suporte pós-implantação",
             ],
           }}
         />
+        
 
         <CardServico
           titulo="🛡 Segurança da Informação"

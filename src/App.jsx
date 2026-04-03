@@ -16,6 +16,7 @@ import Planos from "./pages/Planos";
 
 
 import Desenvolvimento from "./pages/services/Desenvolvimento";
+
 import Seguranca from "./pages/services/Seguranca";
 import Infraestrutura from "./pages/services/Infraestrutura";
 import Hardware from "./pages/services/Hardware";
@@ -25,6 +26,8 @@ import RedesSociais from "./pages/services/RedesSociais";
 import MarketingDigital from "./pages/services/MarketingDigital";
 import CloudDevOps from "./pages/services/CloudDevOps";
 import Monitoramento from "./pages/services/Monitoramento";
+
+import Implantacao from "./pages/services/Implantacao";
 
 import whatsappIcon from "./assets/whatsapp.svg";
 import "./styles.css";
@@ -61,6 +64,9 @@ export default function App() {
             <Route path="/servicos/automacao-ia" element={<AutomacaoIA />} />
             <Route path="/servicos/consultoria" element={<Consultoria />} />
             <Route path="/servicos/redes-sociais" element={<RedesSociais />} />
+            
+         	  <Route path="/servicos/implantacao" element={<Implantacao />} />
+            
             <Route path="/servicos/marketing-digital" element={<MarketingDigital />} />
             <Route path="/servicos/cloud" element={<CloudDevOps />} />
             <Route path="/servicos/monitoramento" element={<Monitoramento />} />
