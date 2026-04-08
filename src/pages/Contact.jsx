@@ -62,8 +62,13 @@ function CardContato({ titulo, principal, descricao, color, destaque }) {
 
       {/* BOTÃO WHATSAPP / EMERGÊNCIA */}
       {destaque && (
-        <a
-          href="https://wa.me"
+
+
+            <a
+
+    href="https://wa.me/5565993546706?text=Ol%C3%A1,%20preciso%20de%20um%20help!%20"
+
+          
           target="_blank"
           rel="noopener noreferrer"
           style={{
