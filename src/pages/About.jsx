@@ -79,7 +79,7 @@ export default function About() {
       <h2 style={{ fontSize: "32px" }}>Sobre nós</h2>
 
       <p style={{ fontSize: "18px", color: "#9aa5b1" }}>
-        A DETOX IT SOLUTIONS é uma empresa voltada para soluções tecnológicas completas,
+        A DETOX IT SOLUTIONS possui soluções tecnológicas completas,
         com foco em performance, estabilidade e inovação. Atuamos no desenvolvimento
         de sistemas, infraestrutura, segurança cibernética e automação, atendendo
         empresas que buscam evolução tecnológica com confiança e eficiência.
