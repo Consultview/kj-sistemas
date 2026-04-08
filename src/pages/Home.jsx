@@ -98,7 +98,7 @@ export default function Home() {
 
       <div className="grid">
         <Servico
-          titulo="⚪ Consultoria Inicial Gratuita"
+          titulo="⚪ Consultoria Inicial"
           descricao="Diagnóstico técnico e orientação estratégica"
           color="#9ca3af"
           destaque
