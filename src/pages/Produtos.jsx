@@ -278,11 +278,25 @@ export default function Marcas() {
 
 
    <div className="buttons">
-          <Link to="/contato">
-            
-              &gt;&gt; Saiba Mais &lt;&lt;
-           
-          </Link>
+
+
+
+         <Link to="/contato/" 
+           className="link-mais" 
+           style={{ 
+             display: 'inline-block',
+             padding: '10px 25px',
+             backgroundColor: 'rgba(0, 43, 94, 0.6)', 
+             border: '2px solid #007bff',            
+             color: '#ffffff',                       
+             borderRadius: '5px',                    
+             textDecoration: 'none',                 
+             fontWeight: 'bold'
+           }}
+         >
+           Saiba Mais
+         </Link>
+         
         </div>
       
 </div>

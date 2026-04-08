@@ -66,8 +66,16 @@ function Servico({
           target="_blank"
           rel="noopener noreferrer"
           className="btn-whatsapp"
+
+style={{ 
+	             backgroundColor: 'rgba(0, 43, 94, 0.6)', 
+	             border: '3px solid #007bff', 
+	             color: '#ffffff',
+	             backdropFilter: 'blur(4px)'      
+		         }}
+          
         >
-          Agendar Avaliação Gratuita
+          Agendar Avaliação
         </a>
       )}
     </div>
@@ -177,9 +185,25 @@ export default function Home() {
       </div>
 
       <div className="buttons" style={{ marginTop: '40px', textAlign: 'center' }}>
-        <Link to="/servicos/" className="link-mais">
-          &gt;&gt; Ver todos os serviços &lt;&lt;
-        </Link>
+
+
+      <Link to="/servicos/" 
+        className="link-mais" 
+        style={{ 
+          display: 'inline-block',
+          padding: '10px 25px',
+          backgroundColor: 'rgba(0, 43, 94, 0.6)', 
+          border: '2px solid #007bff',            
+          color: '#ffffff',                       
+          borderRadius: '5px',                    
+          textDecoration: 'none',                 
+          fontWeight: 'bold'
+        }}
+      >
+        Ver todos os serviços
+      </Link>
+      
+
       </div>
     </div>
   );

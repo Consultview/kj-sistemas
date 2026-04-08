@@ -256,11 +256,24 @@ export default function Services() {
 
 
           <div className="buttons">
-         <Link to="/produtos">
-          
-             &gt;&gt; Mais &lt;&lt;
-           
+
+
+         <Link to="/produtos/" 
+           className="link-mais" 
+           style={{ 
+             display: 'inline-block',
+             padding: '10px 25px',
+             backgroundColor: 'rgba(0, 43, 94, 0.6)', 
+             border: '2px solid #007bff',            
+             color: '#ffffff',                       
+             borderRadius: '5px',                    
+             textDecoration: 'none',                 
+             fontWeight: 'bold'
+           }}
+         >
+           Mais Produtos
          </Link>
+         
          </div>
        </div>
     </div>

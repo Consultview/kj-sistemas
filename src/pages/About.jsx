@@ -161,16 +161,7 @@ export default function About() {
           ]}
         />
 
-        <CardAbout
-          titulo="🌐 Infraestrutura e Cloud"
-          color="#6366f1"
-          descricao="Gestão de ambientes corporativos e nuvem."
-          detalhes={[
-            "Servidores e redes",
-            "Cloud computing",
-            "Alta disponibilidade",
-          ]}
-        />
+     
 
         <CardAbout
           titulo="📊 Foco em resultados"
@@ -186,14 +177,29 @@ export default function About() {
 
 
         
-        
-           <div className="buttons">
-                  <Link to="/contato">
-                    <button className="btn-primary">
-                      &gt;&gt; Fale Conosco!
-                    </button>
-                  </Link>
-                </div>
+ 
+
+
+
+
+    <div className="buttons">
+          <Link to="/contato/"
+            className="link-mais"
+            style={{
+              display: 'inline-block',
+              padding: '10px 25px',
+              backgroundColor: 'rgba(0, 43, 94, 0.6)',
+              border: '2px solid #007bff',
+              color: '#ffffff',
+              borderRadius: '5px',
+              textDecoration: 'none',
+              fontWeight: 'bold'
+           }}
+        >
+           Fale Conosco!
+        </Link>
+
+        </div>
 
         
       </div>

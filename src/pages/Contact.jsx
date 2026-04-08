@@ -1,20 +1,27 @@
 import { useState } from "react";
 
-
 /* =========================
    COMPONENTE CARD CONTATO
 ========================= */
 function CardContato({ titulo, principal, descricao, color, destaque }) {
   const [open, setOpen] = useState(false);
 
+  // Define se é o card de emergência para forçar o vermelho e fundo suave
+  const isEmergencia = titulo.includes("Crítico") || titulo.includes("Segurança");
+  const activeColor = isEmergencia ? "#ef4444" : color;
+  
+  // Cores de fundo com transparência (RGBA)
+  const bgSoft = isEmergencia ? "rgba(239, 68, 68, 0.1)" : "rgba(37, 211, 102, 0.1)";
+
   return (
     <div
       className="card"
       style={{
-        borderLeft: `5px solid ${color}`,
+        borderLeft: `5px solid ${activeColor}`,
         transition: "all 0.3s ease",
         boxShadow: open ? "0 0 0 2px rgba(0,0,0,0.06)" : "none",
         position: "relative",
+        backgroundColor: destaque ? (isEmergencia ? "rgba(239, 68, 68, 0.03)" : "rgba(37, 211, 102, 0.03)") : "transparent"
       }}
     >
       {destaque && (
@@ -23,14 +30,16 @@ function CardContato({ titulo, principal, descricao, color, destaque }) {
             position: "absolute",
             top: "10px",
             right: "10px",
-            background: color,
-            color: "#fff",
+            background: bgSoft, // Fundo mais transparente
+            color: activeColor, // Texto na cor sólida
             padding: "4px 8px",
             borderRadius: "6px",
             fontSize: "12px",
+            fontWeight: "bold",
+            border: `1px solid ${activeColor}33` // Borda bem clarinha
           }}
         >
-          PRIORIDADE
+          {isEmergencia ? "URGENTE" : "PRIORIDADE"}
         </span>
       )}
 
@@ -38,11 +47,11 @@ function CardContato({ titulo, principal, descricao, color, destaque }) {
         onClick={() => setOpen(!open)}
         style={{ cursor: "pointer", display: "flex", gap: "8px" }}
       >
-        <span style={{ color }}>{open ? "▼" : "▶"}</span>
+        <span style={{ color: activeColor }}>{open ? "▼" : "▶"}</span>
         {titulo}
       </h3>
 
-      <p style={{ fontWeight: "bold", color }}>{principal}</p>
+      <p style={{ fontWeight: "bold", color: activeColor }}>{principal}</p>
 
       {/* POSICIONAMENTO */}
       <div style={{ marginTop: "10px" }}>
@@ -51,23 +60,29 @@ function CardContato({ titulo, principal, descricao, color, destaque }) {
         </div>
       </div>
 
-
-
-
-
-
-      {/* BOTÃO WHATSAPP (SÓ NO GRATUITO) */}
-        {destaque && (
-          <a
-
-      href="https://wa.me/5565993546706?text=Ol%C3%A1,%20gostaria%20de%20um%20suporte"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-whatsapp"
-          >
-            Chamar Suporte
-          </a>
-        )}
+      {/* BOTÃO WHATSAPP / EMERGÊNCIA */}
+      {destaque && (
+        <a
+          href="https://wa.me"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: "inline-block",
+            marginTop: "15px",
+            padding: "8px 16px",
+            borderRadius: "8px",
+            textDecoration: "none",
+            fontWeight: "bold",
+            fontSize: "14px",
+            background: bgSoft, // Removido o fundo sólido, agora transparente
+            color: activeColor,
+            border: `1px solid ${activeColor}`,
+            transition: "0.3s"
+          }}
+        >
+          {isEmergencia ? "Acionar Emergência" : "Chamar Suporte"}
+        </a>
+      )}
     </div>
   );
 }
@@ -77,8 +92,7 @@ function CardContato({ titulo, principal, descricao, color, destaque }) {
 ========================= */
 export default function Contact() {
   return (
-    <div className="container">
-      
+    <div className="container" style={{ padding: "40px", fontFamily: "sans-serif" }}>
 
       <h2 style={{ fontSize: "32px" }}>Entre em Contato</h2>
 
@@ -102,13 +116,7 @@ export default function Contact() {
           descricao="Canal direto com especialista para dúvidas, propostas e suporte rápido em tempo real"
         />
 
-        <CardContato
-          titulo="📧 E-mail Comercial"
-          principal="tijacksonlima@proton.me"
-          color="#2563eb"
-          descricao="Envio de propostas, solicitações técnicas, projetos e atendimento corporativo"
-        />
-
+    
         <CardContato
           titulo="⏱ Suporte Crítico 24/7"
           principal="Atendimento emergencial"
