@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/home.css";
+import Sistemas from "./Sistemas";
 
 /* =========================
    COMPONENTE SERVIÇO
@@ -113,7 +114,7 @@ export default function Home() {
         />
 
         <Servico
-          titulo="💻 Desenvolvimento de Sistemas"
+          titulo="💻 Desenvolvimento de Soluções"
           descricao="Criação de sistemas sob medida para operação e gestão"
           link="/servicos/desenvolvimento"
           color="#2563eb"
@@ -202,9 +203,14 @@ export default function Home() {
       >
         Ver todos os serviços
       </Link>
+
       
 
       </div>
+
+
+      <Sistemas />
+      
     </div>
   );
 }
